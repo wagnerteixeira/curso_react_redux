@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 
 module.exports = {
-    entry: './ex.4/index.jsx',
+    entry: './ex/index.jsx',
     output: {
         path: __dirname + '/public',
         filename: './bundle.js'
@@ -19,7 +19,8 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             query:{
-                presets: ['es2015', 'react']
+                presets: ['es2015', 'react'],
+                plugins:['transform-object-rest-spread']
             }
         }]
     }
