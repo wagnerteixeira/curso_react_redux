@@ -63,11 +63,13 @@ export default class Todo extends Component {
         return (
             <div>
                 <PageHeader name='Tarefas' small='Cadastro'></PageHeader>
-                <TodoForm handleChange={this.handleChange}  
+                <TodoForm description={this.state.description} 
+                          handleChange={this.handleChange}  
                           handleAdd={this.handleAdd}
                           handleSearch={this.handleSearch}
                           handleClear={this.handleClear}/>
-                <TodoList handleRemove={this.handleRemove}
+                <TodoList list={this.state.list} 
+                        handleRemove={this.handleRemove}
                         handleMarkAsDone={this.handleMarkAsDone}
                         handleMarkAsPending={this.handleMarkAsPending}/>
             </div>
