@@ -1,5 +1,5 @@
 os = require('os')
-const host = os.hostname()
+const host = 'localhost'// os.hostname()
 const port = 3003
 
 const bodyParser = require('body-parser')
