@@ -13,6 +13,9 @@ server.use(bodyParser.json())
 server.use(allowCors)
 server.use(queryParser())
 
-server.listen(port, host, () => console.log(`BAKEND is running on http:\\\\${host}:${port}`))
+server.listen(port, host, () => {
+    console.log(`BAKEND is running on http://${host}:${port}`)    
+    //console.log(app._router.stack)
+})
 
 module.exports = server

@@ -21,6 +21,7 @@
     "pm2": "^2.1.5"
   },
   "devDependencies": {
+    "express-list-routes": "^0.1.4",
     "nodemon": "^1.11.0"
   }
 }

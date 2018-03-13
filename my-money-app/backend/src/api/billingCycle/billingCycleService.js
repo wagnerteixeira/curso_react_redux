@@ -6,7 +6,7 @@ BillingCycle.updateOptions({new: true, runValidators: true})
 
 BillingCycle.after('post', errorHandler).after('put', errorHandler)
 
-BillingCycle.route('count', (req, res, next) => {
+BillingCycle.route('count', ['get'], (req, res, next) => {
     BillingCycle.count((error, value) => {
         if (error){
             res.status(500).json({erros: [error]})
@@ -16,7 +16,7 @@ BillingCycle.route('count', (req, res, next) => {
     })
 })
 
-BillingCycle.route('summary', (req, res, next) => {
+BillingCycle.route('summary', ['get'], (req, res, next) => {
     BillingCycle.aggregate({
         $project: { 
             credit: {$sum: "$credits.value"}, 
