@@ -4,3 +4,18 @@
     width: 100%;
 }
 
+.box-footer .btn {
+    display:inline-block;
+    min-width: 50px;
+    width: 80px;
+    padding:5px 10px;
+}
+button {
+    margin-left: 5px;
+}
+
+.table-actions {
+    width: 150px;
+    text-align: center;
+}
+

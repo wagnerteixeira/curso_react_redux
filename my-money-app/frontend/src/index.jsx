@@ -7,7 +7,7 @@ import promise from 'redux-promise'
 import multi from 'redux-multi'
 import thunk from 'redux-thunk'
 
-import App from './main/app'
+import Routes from './main/routes'
 import reducers from './main/reducers'
 
 
@@ -20,6 +20,6 @@ const store = createStore(reducers, composeEnhancers(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Routes />
     </Provider>, 
 document.getElementById('app'))
