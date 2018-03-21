@@ -7,18 +7,18 @@ import App from './app'
 import Auth from '../auth/auth'
 import { validateToken } from '../auth/authActions'
 
+const BASE_URL = 'http://localhost:3003/api'
+
 class AuthOrApp extends Component {
     componentWillMount() {
-        console.log(this.props.auth)
-        if (this.props.auth.user) {
-            console.log('validar token')
+        if (this.props.auth.user) {            
             this.props.validateToken(this.props.auth.user.token)
         }
     }
     render() {
         const { user, validToken } = this.props.auth        
         if (user && validToken) {
-            axios.defaults.headers.common['authorization'] = user.token
+            axios.defaults.headers.common['authorization'] = user.token                    
             return <App>{this.props.children}</App>
         } else if (!user && !validToken) {
             return <Auth />

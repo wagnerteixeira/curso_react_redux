@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { logout } from '../../auth/authActions'
 
+import logoUser from '../../content/user.png'
+
 class Navbar extends Component {
 
     constructor(props) {
@@ -16,7 +18,6 @@ class Navbar extends Component {
 
     render() {
         const { name, email } = this.props.user
-        console.log(this.props.logout)
         return (
             <div className="navbar-custom-menu">
                 <ul className="nav navbar-nav">
@@ -26,13 +27,13 @@ class Navbar extends Component {
                             aria-expanded={this.state.open ? 'true' : 'false'}
                             className="dropdown-toggle"
                             data-toggle="dropdown">
-                            <img 
+                            <img src={logoUser}
                                 className="user-image" alt="User Image" />
                             <span className="hidden-xs">{name}</span>
                         </a>
                         <ul className="dropdown-menu">
                             <li className="user-header">
-                                <img 
+                                <img src={logoUser}
                                     className="img-circle" alt="User Image" />
                                 <p>{name}<small>{email}</small></p>
                             </li>
