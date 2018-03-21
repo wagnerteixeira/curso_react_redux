@@ -1,12 +1,30 @@
 const express = require('express')
-var expressListRoutes   = require('express-list-routes')
+const auth = require('./auth')
+//var expressListRoutes   = require('express-list-routes')
 
 module.exports = function(server){
-    //Definir URL base para todas as rotas
-    const router = express.Router()
-    server.use('/api', router)
+    /*
+     * Rotas protegidas por token JWT
+     */
+    const protectedApi = express.Router()
+    server.use('/api', protectedApi)
+
+    protectedApi.use(auth)
+
     const BillingCycle = require('../api/billingCycle/billingCycleService')
-    BillingCycle.register(router, '/billingCycles')
-    console.log("ROTAS:\n")
-    expressListRoutes({ prefix: '/api' }, 'API:', router )
+    BillingCycle.register(protectedApi, '/billingCycles')
+    /*
+     * Rotas Abertas
+     */
+    const openApi = express.Router()
+    server.use('/oapi', openApi)
+
+    const AuthService = require('../api/user/authService')
+    openApi.post('/login', AuthService.login)
+    openApi.post('/signUp', AuthService.signUp)
+    openApi.post('/validateToken', AuthService.validateToken)
+
+   // console.log("ROTAS:\n")
+   // expressListRoutes({ prefix: '/api' }, 'Protected API:', protectedApi)
+   // expressListRoutes({ prefix: '/oapi' }, 'Open API:', openApi)
 }
